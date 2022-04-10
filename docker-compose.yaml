@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  operational_db:
+    image: postgres
+    container_name: academicodb
+    restart: on-failure
+    ports:
+      - 5433:5432
+    environment:
+      - TZ=America/Fortaleza
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=academicodb
+    volumes:
+      - ./init_db/:/docker-entrypoint-initdb.d/
